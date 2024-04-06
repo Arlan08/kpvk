@@ -11,16 +11,18 @@
     <link rel="stylesheet" href="app/css/main.css">
 </head>
 <body>
-    <h1>Выберите язык</h1>
-    <div title="Казак тілін таңдау үшін басыңыз">
-        <a class="button" href="app/pages/kz/kz.html" target="_blank">Казак тілі</a>
-    </div><br><br>
-    <div title="Чтобы выбрать русский язык нажмите на кнопку">
-        <a class="button" href="app/pages/ru/ru.html" target="_blank">Руский язык</a>
-    </div><br><br>
-    <div>
-        <a class="button" href="app/pages/en/en.html">English</a>
-    </div><br><br>
+    <div id="header">
+        <h1>Выберите язык</h1>
+    </div>
+    <div id="main">
+        <a class="button" href="app/pages/kz/kz.html"
+           title="Казак тілін таңдау үшін басыңыз">Казак тілі</a><br><br>
+        <a class="button" href="app/pages/ru/ru.html"
+           title="Чтобы выбрать русский язык нажмите на кнопку">Руский язык</a><br><br>
+        <a class="button" href="app/pages/en/en.html"
+           title="To select the English language, click on the button">English</a><br><br>
+    </div>
+
     <script>
         require('./render.js')
     </script>

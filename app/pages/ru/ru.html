@@ -9,12 +9,19 @@
     <link rel="stylesheet" href="ru.css">
 </head>
 <body>
-    <h1>Выберите пользователя</h1>
-    <div>
-        <a class="button" href="authorization.html" target="_blank">Преподаватель</a>
-    </div><br><br>
-    <div>
-        <a class="button" href="app.html" target="_blank">Студент</a>
+    <button id="backButton" onclick="goBack()">←</button>
+    <div id="header">
+        <h1>Выберите пользователя</h1>
     </div>
+    <div id="main">
+        <a class="button" href="authorization.html">Преподаватель</a><br><br>
+        <a class="button" href="app.html">Студент</a>
+    </div>
+    <script>
+        // JavaScript функция для возврата на предыдущую страницу
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </body>
 </html>
