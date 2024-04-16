@@ -11,6 +11,8 @@ function createWindow() {
        icon: __dirname + "/img/iconkpvk.png"
     });
 
+    win.setMenu(null);
+
     win.loadURL(url.format({
         pathname: path.join(__dirname, 'index.html'),
         protocol: 'file',

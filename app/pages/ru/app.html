@@ -7,6 +7,11 @@
     <meta name="author" content="Амангелді Арлан">
     <meta name="description" content="путиводитель для колледжа">
     <link rel="stylesheet" href="app.css">
+    <style>
+        body::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -31,15 +36,15 @@
                     <button>Кодекс академической честности студентов</button>
                 </div>
             </div>
-            <button onclick="window.location.href='https://kpvk.edu.kz/ru/'">Перейти на сайт</button>
-            <button onclick="window.location.href='https://lib.kpvk.edu.kz/'">Электронная библиотека</button>
-            <button onclick="window.location.href='https://do.kpvk.edu.kz/'">Дистанционное обучение</button>
-            <button onclick="showConnection()">Связь</button>
+            <a target="content" class="btn" href="https://kpvk.edu.kz/ru/">Перейти на сайт</a>
+            <a target="content" class="btn" href="https://lib.kpvk.edu.kz">Электронная библиотека</a>
+            <a target="content" class="btn" href="https://do.kpvk.edu.kz/">Дистанционное обучение</a>
+            <a target="content" class="btn" href="about.html">Связь</a>
         </div>
     </aside>
-    <main class="main-content" id="mainContent">
-        <!-- Содержимое блока main -->
-    </main>
+    <iframe class="main-content" id="mainContent1" name="content">
+
+    </iframe>
 </div>
 <script src="app.js"></script>
 </body>

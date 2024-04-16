@@ -26,6 +26,18 @@ aside {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.aside-buttons .btn {
+    width: 85%;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .button-container {
     margin-top: auto;
     display: flex;
@@ -34,7 +46,7 @@ aside {
 .main-content {
     flex: 1;
     height: 100vh;
-    padding: 20px;
+    padding: 0px;
     background-color: #e0e0e0;
 }
 
