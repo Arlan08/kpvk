@@ -9,6 +9,38 @@
     <link rel="stylesheet" href="app.css">
 </head>
 <body>
-
+<div class="container">
+    <aside>
+        <button id="backButton" onclick="goBack()">←</button>
+        <div class="aside-buttons">
+            <div class="dropdown">
+                <button class="dropbtn" onclick="showDropdown()">Организация обучения в колледже</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <button onclick="infoAboutCollege()">Информация о колледже</button>
+                    <button onclick="showRules()">Правила внутркеннего порядка</button>
+                    <button onclick="infoAboutLibery()">Информационно-библиотечное обеспечение учебного процесса</button>
+                    <button onclick="showTheCode()">Кодекс академической честности студентов</button>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn" onclick="showSecondDropdown()">Информация для студентов</button>
+                <div id="secondDropdown" class="dropdown-content">
+                    <button onclick="showSchedule()">Руководство колледжа</button>
+                    <button onclick="showCalls()">Рекомендации как проводить свободное время</button>
+                    <button>Информационно-библиотечное обеспечение учебного процесса</button>
+                    <button>Кодекс академической честности студентов</button>
+                </div>
+            </div>
+            <button onclick="window.location.href='https://kpvk.edu.kz/ru/'">Перейти на сайт</button>
+            <button onclick="window.location.href='https://lib.kpvk.edu.kz/'">Электронная библиотека</button>
+            <button onclick="window.location.href='https://do.kpvk.edu.kz/'">Дистанционное обучение</button>
+            <button onclick="showConnection()">Связь</button>
+        </div>
+    </aside>
+    <main class="main-content" id="mainContent">
+        <!-- Содержимое блока main -->
+    </main>
+</div>
+<script src="app.js"></script>
 </body>
 </html>
