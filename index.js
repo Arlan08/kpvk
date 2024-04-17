@@ -6,7 +6,7 @@ let win;
 
 function createWindow() {
     win = new BrowserWindow({
-       width: 1000,
+       width: 1050,
        height: 700,
        icon: __dirname + "/img/iconkpvk.png"
     });
