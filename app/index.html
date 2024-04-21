@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Костанайский политехнический высший колледж</title>
+    <meta name="author" content="Амангелді Арлан">
+    <meta name="description" content="путиводитель для колледжа">
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
+    <link href="assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <link href="assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME LAYOUT STYLES -->
+    <style>
+        .page-content {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateY(-50%) translateX(-50%);
+            background-color: #e5dfd8;
+        }
+
+        .icon-btn {
+            width: 200px;
+            height: 120px;
+            padding: 40px 0 0;
+            margin: 0 20px 0 0;
+            background-color: #c3cace;
+            border-radius: 10px;
+        }
+
+        body {
+            background-color: #e5dfd8;
+        }
+
+        .form-group {
+            font-size: 11px;
+            position: absolute;
+            right: 1%;
+            top: 2%;
+        }
+
+        .mt-radio {
+            font-size: 9px;
+        }
+
+        .mt-radio-inline {
+            padding: 0px;
+        }
+    </style>
+</head>
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-md">
+<div class="page-wrapper">
+    <div class="form-group">
+        <div class="mt-radio-inline">
+            <label class="mt-radio">
+                <input type="radio" name="optionsRadios" id="langOptionRadioRu" onclick="setLang('ru')" value="ru" checked=""> RU
+                <span></span>
+            </label>
+            <label class="mt-radio">
+                <input type="radio" name="optionsRadios" id="langOptionRadioKk" onclick="setLang('kk')" value="kk"> KK
+                <span></span>
+            </label>
+            <label class="mt-radio">
+                <input type="radio" name="optionsRadios" id="langOptionRadioEn" onclick="setLang('en')" value="en"> EN
+                <span></span>
+            </label>
+        </div>
+    </div>
+</div>
+<div class="page-content">
+    <div>
+        <div class="portlet-body">
+            <a href="#" onclick="navigateToTeacher()" class="icon-btn">
+                <i class="fa fa-book" style="font-size: 2.75em!important;"></i>
+                <div> Преподаватели </div>
+            </a>
+            <a href="#" onclick="navigateToStudent()" class="icon-btn">
+                <i class="fa fa-graduation-cap" style="font-size: 2.75em"></i>
+                <div> Студенты </div>
+            </a>
+        </div>
+    </div>
+</div>
+<script>
+    window.localStorage.setItem('lang', 'ru')
+
+    function setLang(lang) {
+        window.localStorage.setItem('lang', lang)
+    }
+
+    function navigateToStudent() {
+        const lang = window.localStorage.getItem('lang')
+        window.location = 'pages/' + lang + '/student.html'
+    }
+    require('./render.js')
+</script>
+</body>
+</html>
