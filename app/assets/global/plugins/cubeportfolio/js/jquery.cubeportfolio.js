@@ -1615,7 +1615,7 @@ jQuery.fn.cubeportfolio.options = {
      *  Markup of the singlePage counter
      *  Values: html markup
      */
-    singlePageCounter: '<div class="cbp-popup-singlePage-counter">{{current}} of {{total}}</div>',
+    singlePageCounter: '<div>{{current}} of {{total}}</div>',
 
     /**
      *  Defines which animation to use when singlePage appear
