@@ -53,7 +53,6 @@
                     timeout: 10000
                 })
                 .done(function(result) {
-                    debugger
 
                     t.updateSinglePageInline(result);
 
