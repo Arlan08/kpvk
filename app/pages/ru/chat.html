@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Связь</title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="../../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="../../assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
+    <link href="../../assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <link href="../../assets/pages/css/contact.min.css" rel="stylesheet" type="text/css" />
+    <!-- END PAGE LEVEL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <link href="../../assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="../../assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME LAYOUT STYLES -->
+    <link rel="shortcut icon" href="favicon.ico" /> 
+</head>
+<body>
+<div class="page-content" style="padding-bottom: 1220px">
+    <h3 class="page-title"> Chat</h3>
+    <div id="messages">
+
+    </div>
+    <div id="login">
+        <input type="text" id="username"/>
+        <button onclick="auth()">login</button>
+    </div>
+    <br>
+    <br>
+    <div id="sendMessage">
+        <input type="text" id="message" rows="100"/><br>
+        <button onclick="sendMessage()">send</button>
+    </div>
+</div>
+<script>
+    const token = localStorage.getItem("token")
+
+    if (token != null) {
+        document.getElementById("login").style.display = "none";
+    } else  {
+        document.getElementById("messages").style.display = "none";
+        document.getElementById("sendMessage").style.display = "none";
+    }
+
+    function auth() {
+        const username = document.getElementById("username").value
+        fetch("http://127.0.0.1:8080/auth/" + username, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.text();
+        }).then(data => {
+            localStorage.setItem('token', data);
+            window.location.reload();
+        });
+    }
+
+    function sendMessage() {
+        const message = document.getElementById("message").value
+        fetch("http://127.0.0.1:8080/messages", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "token": token
+            },
+            body: JSON.stringify({ text: message })
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        }).then(data => {
+            setMessages()
+        });
+    }
+
+    function setMessages() {
+        fetch("http://127.0.0.1:8080/messages", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        }).then(data => {
+            const docMessages = document.getElementById("messages")
+
+            var innerHTML = ''
+
+            data.forEach(i => {
+                innerHTML +=  '<b>' + i.createdAt + ' </b>' + '<b>' + i.author + ' </b>' + '<span>' + i.text + '</span></br>'
+            });
+
+            docMessages.innerHTML = innerHTML
+        });
+    }
+
+    setMessages();
+    setInterval(setMessages, 1000);
+</script>
+</body>
+</html>
