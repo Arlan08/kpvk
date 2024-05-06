@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Window</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+    }
+
+    .chat-container {
+        max-width: 400px;
+        margin: 20px auto;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .chat-messages {
+        max-height: 300px;
+        overflow-y: auto;
+        padding: 20px;
+    }
+
+    .chat-messages p {
+        margin: 5px 0;
+    }
+
+    .chat-input {
+        display: flex;
+        background-color: #fff;
+        border-top: 1px solid #ccc;
+    }
+
+    input[type="text"] {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: 0;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+    }
+
+    button {
+        padding: 10px 20px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+<body>
+<div class="chat-container">
+    <div class="chat-messages" id="chat-messages">
+        <!-- Chat messages will appear here -->
+    </div>
+    <div class="chat-input">
+        <input type="text" id="message-input" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+<script>
+    function sendMessage() {
+        var messageInput = document.getElementById("message-input");
+        var message = messageInput.value;
+        if (message.trim() !== "") {
+            var chatMessages = document.getElementById("chat-messages");
+            var messageElement = document.createElement("p");
+            messageElement.textContent = message;
+            chatMessages.appendChild(messageElement);
+            messageInput.value = "";
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    }
+</script>
+<a href="javascript:;" class="page-quick-sidebar-back-to-list">
+    <i class="icon-arrow-left"></i>Back</a>
+</body>
+</html>

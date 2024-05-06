@@ -26,21 +26,57 @@
     <!-- END THEME LAYOUT STYLES -->
     <link rel="shortcut icon" href="favicon.ico" /> 
 </head>
+<style>
+    .chat-container {
+        max-width: 400px;
+        margin: 20px auto;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .chat-input {
+        display: flex;
+        background-color: #fff;
+        border-top: 1px solid #ccc;
+    }
+
+    input[type="text"] {
+        padding: 10px;
+        border: none;
+        border-radius: 0;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+    }
+    button {
+        padding: 10px 20px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
 <body>
 <div class="page-content" style="padding-bottom: 1220px">
     <h3 class="page-title"> Chat</h3>
     <div id="messages">
 
     </div>
-    <div id="login">
-        <input type="text" id="username"/>
-        <button onclick="auth()">login</button>
+
+    <div id="login" class="chat-input">
+        <input type="text" id="username" placeholder="Type your name..."/>
+        <button onclick="auth()">Login</button>
     </div>
     <br>
     <br>
-    <div id="sendMessage">
-        <input type="text" id="message" rows="100"/><br>
-        <button onclick="sendMessage()">send</button>
+    <div id="sendMessage" class="chat-input">
+        <input type="text" id="message" placeholder="Type your message..." rows="100"/>
+        <button onclick="sendMessage()">Send</button>
     </div>
 </div>
 <script>
