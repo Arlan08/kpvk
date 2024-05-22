@@ -5,7 +5,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>Костанайский Политехнический высший колледж</title>
+        <title>Қостанай Политехникалық Жоғары Колледжі</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #1 for bootstrap advanced color pickers" name="description" />
@@ -43,7 +43,7 @@
                         <div class="portlet-title">
                             <div class="caption font-red-intense">
                                 <i class="icon-speech font-red-intense"></i>
-                                <span class="caption-subject bold uppercase">Расписание</span>
+                                <span class="caption-subject bold uppercase">Кесте</span>
                                 <span class="caption-helper"></span>
                             </div>
                             <div class="actions">
@@ -61,11 +61,11 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th> День недели </th>
+                                    <th> Аптаның күні </th>
                                     <th> # </th>
-                                    <th> Предмет </th>
-                                    <th> Начало </th>
-                                    <th> Конец </th>
+                                    <th> Сабақ </th>
+                                    <th> Басы </th>
+                                    <th> Аяғы </th>
                                 </tr>
                             </thead>
                             <tbody id="schedules">
@@ -83,17 +83,17 @@
     function titleOfWeek(key) {
         switch(key) {
             case "MONDAY":
-                return 'Понедельник';
+                return 'Дүйсенбі';
             case "TUESDAY":
-                return 'Вторник';
+                return 'Сейсенбі';
             case "WEDNESDAY":
-                return 'Среда';
+                return 'Сәрсенбі';
             case "THURSDAY":
-                return 'Четверг';
+                return 'Бейсенбі';
             case "FRIDAY":
-                return 'Пятница';
+                return 'Жұма';
             case "SATURDAY":
-                return 'Суббота';
+                return 'Сенбі';
             default:
                 return key;
         }
