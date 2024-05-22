@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Костанайский Политехнический высший колледж</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta content="Preview page of Metronic Admin Theme #1 for bootstrap advanced color pickers" name="description" />
+        <meta content="" name="author" />
+        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+        <link href="../../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+        <!-- END GLOBAL MANDATORY STYLES -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <link href="../../assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css" rel="stylesheet" type="text/css" />
+        <link href="../../assets/global/plugins/jquery-minicolors/jquery.minicolors.css" rel="stylesheet" type="text/css" />
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL STYLES -->
+        <link href="../../assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="../../assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
+        <!-- END THEME GLOBAL STYLES -->
+        <!-- BEGIN THEME LAYOUT STYLES -->
+        <link href="../../assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="../../assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
+        <!-- END THEME LAYOUT STYLES -->
+        <link rel="shortcut icon" href="favicon.ico" /> </head>
+    <!-- END HEAD -->
+
+    <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-md">
+        <!-- BEGIN CONTENT BODY -->
+        <div class="page-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- BEGIN PORTLET-->
+                    <div class="portlet light bordered form-fit">
+                        <div class="portlet-title">
+                            <div class="caption font-red-intense">
+                                <i class="icon-speech font-red-intense"></i>
+                                <span class="caption-subject bold uppercase">Расписание</span>
+                                <span class="caption-helper"></span>
+                            </div>
+                            <div class="actions">
+                                <a href="javascript:;" class="btn btn-circle btn-default btn-sm">
+                                    <i class="fa fa-pencil"></i> Edit </a>
+                                <a href="javascript:;" class="btn btn-circle btn-default btn-sm">
+                                    <i class="fa fa-plus"></i> Add </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END PORTLET-->
+                </div>
+                <div class="col-md-12">
+                    <div class="table-scrollable">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th> День недели </th>
+                                    <th> # </th>
+                                    <th> Предет </th>
+                                    <th> Начало </th>
+                                    <th> Конец </th>
+                                </tr>
+                            </thead>
+                            <tbody id="schedules">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END CONTENT BODY -->
+ <script>
+    const host = "http://127.0.0.1:8989"
+        
+    function setMessages() {
+        fetch(host + "/schedules", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        }).then(data => {
+            const docSchedules = document.getElementById("schedules")
+
+            var innerHTML = ''
+            data.forEach(s => {
+                innerHTML += `
+                    <tr>
+                        <td style='border-bottom: 1px dashed;' colspan=5><b>${s.dayOfWeek}</b></td>
+                    </tr>
+                `
+                var index = 1
+                s.lessons.forEach(l => {
+                    innerHTML += `
+                        <tr>
+                            <td></td>
+                            <td>${index}</td>
+                            <td>${l.lessonName}</td>
+                            <td>${l.startTime}</td>
+                            <td>${l.endTime}</td>
+                        </tr>
+                    `;
+                    index++;
+                });
+            });
+            docSchedules.innerHTML = innerHTML
+        });
+    }
+    
+    setMessages()
+</script>
+        <!--[if lt IE 9]>
+<script src="../../assets/global/plugins/respond.min.js"></script>
+<script src="../../assets/global/plugins/excanvas.min.js"></script> 
+<script src="../../assets/global/plugins/ie8.fix.min.js"></script> 
+<![endif]-->
+        <!-- BEGIN CORE PLUGINS -->
+        <script src="../../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+        <script src="../../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../../assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+        <script src="../../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="../../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+        <script src="../../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <script src="../../assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" type="text/javascript"></script>
+        <script src="../../assets/global/plugins/jquery-minicolors/jquery.minicolors.min.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL SCRIPTS -->
+        <script src="../../assets/global/scripts/app.min.js" type="text/javascript"></script>
+        <!-- END THEME GLOBAL SCRIPTS -->
+        <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <script src="../../assets/pages/scripts/components-color-pickers.min.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL SCRIPTS -->
+        <!-- BEGIN THEME LAYOUT SCRIPTS -->
+        <script src="../../assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
+        <script src="../../assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
+        <script src="../../assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+        <script src="../../assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+        <!-- END THEME LAYOUT SCRIPTS -->
+    </body>
+
+</html>
